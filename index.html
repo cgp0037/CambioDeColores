@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Colores aleatorios</title>
+    
+</head>
+<body>
+    <button id="boton">Cambiar Color</button>
+
+    <script>
+        const colores = ['#ffffcc', '#ffcc99', '#ffcccc', '#ff99cc', '#ffccff', '#cc99ff', '#ccccff', '#99ccff', '#ccffff', '#99ffcc', '#ccffcc', '#ccff99'];
+        let index = 0;
+        let intervalo;
+
+        function cambiarColorFondo() {
+            document.body.style.backgroundColor = colores[index];
+            index = (index + 1) % colores.length;
+        }
+
+        function toggleCambioColores() {
+            if (intervalo) {
+                clearInterval(intervalo);
+                intervalo = null;
+                document.getElementById("boton").textContent = "Iniciar";
+            } else {
+                intervalo = setInterval(cambiarColorFondo, 800); 
+                document.getElementById("boton").textContent = "Detener";
+            }
+        }
+
+        document.getElementById("boton").addEventListener("click", toggleCambioColores);
+    </script>
+
+</body>
+</html>
